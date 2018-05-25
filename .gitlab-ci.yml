@@ -18,5 +18,5 @@ build:
     - 'dotnet publish movieCruiserByRohith -c Release'
   artifacts:
     expire_in: 1 month
-    path:
+    paths:
       - movieCruiserByRohith/bin/Release/netcoreapp2.0/publish/
