@@ -1,0 +1,11 @@
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\obj\Debug\netcoreapp2.0\movieCruiserByRohith.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\obj\Debug\netcoreapp2.0\movieCruiserByRohith.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\obj\Debug\netcoreapp2.0\movieCruiserByRohith.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\obj\Debug\netcoreapp2.0\movieCruiserByRohith.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\bin\Debug\netcoreapp2.0\movieCruiserByRohith.deps.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\bin\Debug\netcoreapp2.0\movieCruiserByRohith.runtimeconfig.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\bin\Debug\netcoreapp2.0\movieCruiserByRohith.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\bin\Debug\netcoreapp2.0\movieCruiserByRohith.dll
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\bin\Debug\netcoreapp2.0\movieCruiserByRohith.pdb
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\obj\Debug\netcoreapp2.0\movieCruiserByRohith.dll
+C:\Users\Administrator\source\repos\movieCruiserByRohith\movieCruiserByRohith\obj\Debug\netcoreapp2.0\movieCruiserByRohith.pdb
