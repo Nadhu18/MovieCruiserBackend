@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using movieCruiserByRohith.Data.Models;
 using movieCruiserByRohith.Services;
 
 namespace movieCruiserByRohith.Controllers
@@ -34,29 +36,91 @@ namespace movieCruiserByRohith.Controllers
             }
         }
 
-        //// GET: api/Movie/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET: api/Movie/123
+        [HttpGet("{id}")]
+        public IActionResult GetMovie([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var movie = _service.GetMovie(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            return Ok(movie);
+        }
 
-        //// POST: api/Movie
-        //[HttpPost]
-        //public void Post([FromBody]string value)
-        //{
-        //}
-
-        //// PUT: api/Movie/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpPost]
+        public ActionResult PostMovie([FromBody] Movie movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                _service.AddMovie(movie);
+            }
+            catch (DbUpdateException)
+            {
+                if (_service.MovieExists(movie.Id))
+                {
+                    return new StatusCodeResult(StatusCodes.Status409Conflict);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
+        }
+        // PUT: api/Movie/5
+        [HttpPut("{id}")]
+        public IActionResult PutMovie([FromRoute] int id, [FromBody] Movie movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (id != movie.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                _service.EditMovie(movie);
+                return Ok(movie);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_service.MovieExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+        // DELETE: api/Movie/5
+        [HttpDelete("{id}")]
+        public IActionResult DeleteMovie([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var movie = _service.GetMovie(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            _service.DeleteMovie(id);
+            return Ok(movie);
+        }
+        
     }
 }
