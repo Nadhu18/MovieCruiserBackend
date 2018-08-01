@@ -26,7 +26,49 @@ namespace test
 
             //Assert
             Assert.IsAssignableFrom<List<Movie>>(actual);
-            Assert.Equal(3, actual.Count);
+            Assert.True(actual.Count>3);
+        }
+
+        [Fact]
+        public void GetMovie_ShouldReturnAMovie()
+        {
+            var actual = _repo.GetMovie(1);
+
+            Assert.IsAssignableFrom<Movie>(actual);
+            Assert.Equal("movie1", actual.Name);
+        }
+
+        [Fact]
+        public void AddMovie_MovieIsAdded()
+        {
+            var movie = new Movie { Id = 5, Name = "Movie Test", Comments = "comments1", PosterPath = "pp.jpg", ReleaseDate = "releaseDate1", VoteAverage = 5.00, VoteCount = 100 };
+
+            _repo.AddMovie(movie);
+            var savedMovie = _repo.GetMovie(5);
+
+            Assert.Equal("Movie Test", savedMovie.Name);
+        }
+
+        [Fact]
+        public void EditMovie_MovieIsEdited()
+        {
+            var movie = new Movie { Id = 6, Name = "Movie Test", Comments = "comments1", PosterPath = "pp.jpg", ReleaseDate = "releaseDate1", VoteAverage = 5.00, VoteCount = 100 };
+
+            _repo.AddMovie(movie);
+            movie.Name = "Movie Test Edited";
+
+            _repo.EditMovie(movie);
+            var savedMovie = _repo.GetMovie(movie.Id);
+
+            Assert.Equal("Movie Test Edited", savedMovie.Name);
+        }
+
+        [Fact]
+        public void DeleteMovie_MovieIsDeleted()
+        {
+            _repo.DeleteMovie(1);
+
+            Assert.Null(_repo.GetMovie(1));
         }
     }
 }
