@@ -1,8 +1,6 @@
 ﻿using movieCruiserByRohith.Data.Models;
 using movieCruiserByRohith.Data.Persistence;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace test

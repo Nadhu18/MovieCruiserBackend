@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using movieCruiserByRohith.Services;
-using movieCruiserByRohith.Data.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Microsoft.AspNetCore.Mvc;
 using movieCruiserByRohith.Controllers;
+using movieCruiserByRohith.Data.Models;
+using movieCruiserByRohith.Services;
+using System.Collections.Generic;
 using System.Linq;
+using Xunit;
 
 namespace test
 {
@@ -74,8 +72,8 @@ namespace test
             var editedMovie = new Movie { Id = 5, Name = "Movie Test Edited", Comments = "comments1", PosterPath = "pp.jpg", ReleaseDate = "releaseDate1", VoteAverage = 5.00, VoteCount = 100 };
 
             mockService.Setup(service => service.EditMovie(editedMovie)).Callback<Movie>((m) => movie = m);
-            var controller = new MovieController(mockService.Object);
 
+            var controller = new MovieController(mockService.Object);
             var result = controller.PutMovie(movie.Id, editedMovie);
 
             var actionResult = Assert.IsType<OkObjectResult>(result);

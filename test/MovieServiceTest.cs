@@ -1,12 +1,10 @@
-﻿using movieCruiserByRohith.Data.Models;
+﻿using Moq;
+using movieCruiserByRohith.Data.Models;
 using movieCruiserByRohith.Data.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using Moq;
 using movieCruiserByRohith.Services;
+using System.Collections.Generic;
 using System.Linq;
+using Xunit;
 
 namespace test
 {
@@ -32,10 +30,11 @@ namespace test
         [Fact]
         public void GetMovie_ReturnAMovie()
         {
+            //Arrange
             var movieRepo = new Mock<IMovieRepository>();
             movieRepo.Setup(repo => repo.GetMovie(1)).Returns(this.GetMovies().Single(m => m.Id == 1));
-
             var service = GetMovieService(movieRepo.Object);
+
             var actual = service.GetMovie(1);
 
             Assert.IsAssignableFrom<Movie>(actual);
@@ -47,13 +46,13 @@ namespace test
         {
             var movieRepo = new Mock<IMovieRepository>();
             List<Movie> addedMovies = new List<Movie>();
-            var movie = new Movie { Id = 5, Name = "Movie Test", Comments = "comments1", PosterPath = "pp.jpg", ReleaseDate = "releaseDate1", VoteAverage = 5.00, VoteCount = 100 };
 
+            var movie = new Movie { Id = 5, Name = "Movie Test", Comments = "comments1", PosterPath = "pp.jpg", ReleaseDate = "releaseDate1", VoteAverage = 5.00, VoteCount = 100 };
             movieRepo.Setup(repo => repo.AddMovie(movie)).Callback<Movie>((m) => addedMovies.Add(m));
             var service = GetMovieService(movieRepo.Object);
             service.AddMovie(movie);
-            Assert.True(1 == addedMovies.Count);
 
+            Assert.True(1 == addedMovies.Count);
             Assert.NotNull(addedMovies.SingleOrDefault(m => m.Name == "Movie Test"));
         }
 

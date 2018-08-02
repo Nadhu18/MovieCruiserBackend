@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using movieCruiserByRohith.Data.Models;
 using movieCruiserByRohith.Services;
+using System;
 
 namespace movieCruiserByRohith.Controllers
 {
@@ -21,6 +18,7 @@ namespace movieCruiserByRohith.Controllers
             _service = service;
         }
 
+        // Method to get all the movies from the repository
         // GET: api/Movie
         [HttpGet]
         public IActionResult Get()
@@ -36,6 +34,7 @@ namespace movieCruiserByRohith.Controllers
             }
         }
 
+        //Method to get a particular movie from the repository
         // GET: api/Movie/123
         [HttpGet("{id}")]
         public IActionResult GetMovie([FromRoute] int id)
@@ -52,6 +51,7 @@ namespace movieCruiserByRohith.Controllers
             return Ok(movie);
         }
 
+        //Method to save a movie to the repository
         [HttpPost]
         public ActionResult PostMovie([FromBody] Movie movie)
         {
@@ -59,11 +59,8 @@ namespace movieCruiserByRohith.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             try
-            {
-                _service.AddMovie(movie);
-            }
-            catch (DbUpdateException)
             {
                 if (_service.MovieExists(movie.Id))
                 {
@@ -71,11 +68,18 @@ namespace movieCruiserByRohith.Controllers
                 }
                 else
                 {
-                    throw;
+                    _service.AddMovie(movie);
                 }
             }
+            catch (Exception)
+            {
+                throw new Exception("Unkonown error occured");
+            }
+
             return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
         }
+
+        //Method to edit the already existing movie in the repository
         // PUT: api/Movie/5
         [HttpPut("{id}")]
         public IActionResult PutMovie([FromRoute] int id, [FromBody] Movie movie)
@@ -84,14 +88,17 @@ namespace movieCruiserByRohith.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             if (id != movie.Id)
             {
                 return BadRequest();
             }
+
             try
             {
                 _service.EditMovie(movie);
                 return Ok(movie);
+                
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -105,6 +112,8 @@ namespace movieCruiserByRohith.Controllers
                 }
             }
         }
+
+        //Method to delete a movie from repository
         // DELETE: api/Movie/5
         [HttpDelete("{id}")]
         public IActionResult DeleteMovie([FromRoute] int id)
@@ -113,11 +122,14 @@ namespace movieCruiserByRohith.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             var movie = _service.GetMovie(id);
+
             if (movie == null)
             {
                 return NotFound();
             }
+
             _service.DeleteMovie(id);
             return Ok(movie);
         }

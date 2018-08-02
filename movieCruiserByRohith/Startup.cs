@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using movieCruiserByRohith.Data.Persistence;
 using movieCruiserByRohith.Services;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace movieCruiserByRohith
 {
@@ -46,6 +42,17 @@ namespace movieCruiserByRohith
             {
                 dbContext.Database.EnsureCreated();
             }
+
+            services.AddSwaggerGen(swagGen =>
+            {
+                swagGen.SwaggerDoc("v1", new Info
+                {
+                    Title = "Movie Cruiser API",
+                    Version = "v1",
+                    Description = "Movie Cruiser API developed in ASP.NET Core."
+                });
+                swagGen.DescribeAllEnumsAsStrings();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +64,13 @@ namespace movieCruiserByRohith
             }
 
             app.UseMvc();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
+            });
         }
     }
 }
