@@ -24,7 +24,8 @@ namespace movieCruiserByRohith
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Environment.GetEnvironmentVariable("SQLSERVER_MOVIE");
-            if (string.IsNullOrEmpty(connectionString)) {
+            if (string.IsNullOrEmpty(connectionString))
+            {
                 connectionString = Configuration.GetConnectionString("MovieCruiserByRohithDB");
             }
             services.AddMvc();
@@ -62,6 +63,11 @@ namespace movieCruiserByRohith
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.AllowAnyHeader()
+          .AllowAnyOrigin()
+          .AllowAnyMethod()
+          .AllowCredentials());
 
             app.UseMvc();
 

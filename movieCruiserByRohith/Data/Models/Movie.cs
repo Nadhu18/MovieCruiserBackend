@@ -10,22 +10,22 @@ namespace movieCruiserByRohith.Data.Models
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
-        [JsonProperty(PropertyName = "name")]
+        [JsonProperty(PropertyName = "title")]
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "comments")]
         public string Comments { get; set; }
 
-        [JsonProperty(PropertyName = "posterPath")]
+        [JsonProperty(PropertyName = "poster_path")]
         public string PosterPath { get; set; }
 
-        [JsonProperty(PropertyName = "releaseDate")]
+        [JsonProperty(PropertyName = "release_date")]
         public string ReleaseDate { get; set; }
 
-        [JsonProperty(PropertyName = "voteAverage")]
+        [JsonProperty(PropertyName = "vote_average")]
         public double VoteAverage { get; set; }
 
-        [JsonProperty(PropertyName = "voteCount")]
+        [JsonProperty(PropertyName = "vote_count")]
         public int VoteCount { get; set; }
     }
 }
