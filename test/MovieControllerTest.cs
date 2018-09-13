@@ -80,6 +80,23 @@ namespace test
             Assert.Equal("Movie Test Edited", ((Movie)actionResult.Value).Name);
         }
 
+        //Negative test case for put
+        [Fact]
+        public void PutMovie_EditedMovieDoesNotExist()
+        {
+            var movie = new Movie { Id = 111, Name = "movie", Comments = "comments1", PosterPath = "path1", ReleaseDate = "releaseDate1", VoteAverage = 5.00, VoteCount = 100 };
+            var editedMovie = new Movie { Id = 11111, Name = "edited movie", Comments = "comments1", PosterPath = "path1", ReleaseDate = "releaseDate1", VoteAverage = 5.00, VoteCount = 100 };
+
+            var mockService = new Mock<IMovieService>();
+            mockService.Setup(service => service.MovieExists(editedMovie.Id)).Returns(false);
+
+            var mockController = new MovieController(mockService.Object);
+            var result = mockController.PutMovie(movie.Id, editedMovie);
+
+            var actionResult = Assert.IsType<BadRequestResult>(result);
+            Assert.Equal<int>(400, actionResult.StatusCode);
+        }
+
         //Test to remove a record from the repository
         [Fact]
         public void DeleteMovie_MovieIsDeleted()
@@ -98,6 +115,23 @@ namespace test
             Assert.True(0 == addedMovies.Count);
         }
 
+        //negative test case for delete
+        [Fact]
+        public void DeleteMovie_MovieDoesNotExists()
+        {
+            var movie = new Movie { Id = 1, Name = "movie1", Comments = "comments1", PosterPath = "path1", ReleaseDate = "releaseDate1", VoteAverage = 5.00, VoteCount = 100 };
+            Movie deletedMovie = null;
+
+            var mockService = new Mock<IMovieService>();
+            mockService.Setup(service => service.GetMovie(movie.Id)).Returns(deletedMovie);
+
+            var mockController = new MovieController(mockService.Object);
+            var result = mockController.DeleteMovie(movie.Id);
+
+            var actionResult = Assert.IsType<NotFoundObjectResult>(result);
+            Assert.Equal<int>(404, actionResult.StatusCode.Value);
+        }
+
         private List<Movie> GetMovies()
         {
             var movie = new List<Movie>();
@@ -108,5 +142,8 @@ namespace test
 
             return movie;
         }
+
+
+        
     }
 }

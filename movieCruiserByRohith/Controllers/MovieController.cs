@@ -26,11 +26,16 @@ namespace movieCruiserByRohith.Controllers
             try
             {
                 var result = _service.GetAllMovies();
+
+                if (result == null || result.Count == 0)
+                {
+                    return Ok("No results found");
+                }
                 return Ok(result);
             }
             catch (Exception)
             {
-                return NotFound("There is an Error");
+                return BadRequest("There is an Error");
             }
         }
 
@@ -43,10 +48,12 @@ namespace movieCruiserByRohith.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             var movie = _service.GetMovie(id);
+
             if (movie == null)
             {
-                return NotFound();
+                return NotFound("Didn't find movie with id " + id);
             }
             return Ok(movie);
         }
@@ -73,7 +80,7 @@ namespace movieCruiserByRohith.Controllers
             }
             catch (Exception)
             {
-                throw new Exception("Unkonown error occured");
+                return BadRequest("Please check the movie details that you have entered.");
             }
 
             return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
@@ -98,17 +105,17 @@ namespace movieCruiserByRohith.Controllers
             {
                 _service.EditMovie(movie);
                 return Ok(movie);
-                
+
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!_service.MovieExists(id))
                 {
-                    return NotFound();
+                    return NotFound("Movie does not exist, please check your input");
                 }
                 else
                 {
-                    throw;
+                    return new StatusCodeResult(StatusCodes.Status500InternalServerError);
                 }
             }
         }
@@ -127,12 +134,12 @@ namespace movieCruiserByRohith.Controllers
 
             if (movie == null)
             {
-                return NotFound();
+                return NotFound("Movie doesn't exist");
             }
 
             _service.DeleteMovie(id);
             return Ok(movie);
         }
-        
+
     }
 }
