@@ -9,7 +9,7 @@ namespace movieCruiserByRohith.Data.Persistence
         
         Movie GetMovie(int id);
 
-        bool MovieExists(int id);
+        bool MovieExists(int id, string userId);
 
         void AddMovie(Movie movie);
 

@@ -6,6 +6,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "movieCruiserByRohith", "mov
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "test\test.csproj", "{EF7B906A-4516-4FF9-B994-B0D497A87589}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthSever", "AuthSever\AuthSever.csproj", "{A8CB4F80-B03F-42F6-BA08-34076E67DC85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,18 @@ Global
 		{EF7B906A-4516-4FF9-B994-B0D497A87589}.Release|x64.Build.0 = Release|Any CPU
 		{EF7B906A-4516-4FF9-B994-B0D497A87589}.Release|x86.ActiveCfg = Release|Any CPU
 		{EF7B906A-4516-4FF9-B994-B0D497A87589}.Release|x86.Build.0 = Release|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Debug|x64.Build.0 = Debug|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Debug|x86.Build.0 = Debug|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Release|x64.ActiveCfg = Release|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Release|x64.Build.0 = Release|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Release|x86.ActiveCfg = Release|Any CPU
+		{A8CB4F80-B03F-42F6-BA08-34076E67DC85}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

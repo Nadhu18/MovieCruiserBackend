@@ -1,0 +1,11 @@
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthServer.deps.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthServer.runtimeconfig.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthServer.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthServer.dll
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthServer.pdb
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthServer.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthServer.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthServer.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthServer.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthServer.dll
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthServer.pdb

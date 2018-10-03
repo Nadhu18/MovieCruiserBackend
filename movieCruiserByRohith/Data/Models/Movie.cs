@@ -6,9 +6,12 @@ namespace movieCruiserByRohith.Data.Models
 {
     public class Movie
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
+
+        [JsonProperty(PropertyName = "movieId")]
+        public int MovieId { get; set; }
 
         [JsonProperty(PropertyName = "title")]
         public string Name { get; set; }
@@ -27,5 +30,9 @@ namespace movieCruiserByRohith.Data.Models
 
         [JsonProperty(PropertyName = "vote_count")]
         public int VoteCount { get; set; }
+
+        [JsonProperty(PropertyName = "userId")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public string UserId { get; set; }
     }
 }

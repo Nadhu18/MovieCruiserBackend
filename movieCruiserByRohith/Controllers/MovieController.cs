@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using movieCruiserByRohith.Data.Models;
@@ -9,6 +10,7 @@ namespace movieCruiserByRohith.Controllers
 {
     [Produces("application/json")]
     [Route("api/Movie")]
+    [Authorize]
     public class MovieController : Controller
     {
         private readonly IMovieService _service;
@@ -26,11 +28,7 @@ namespace movieCruiserByRohith.Controllers
             try
             {
                 var result = _service.GetAllMovies();
-
-                if (result == null || result.Count == 0)
-                {
-                    return Ok("No results found");
-                }
+                
                 return Ok(result);
             }
             catch (Exception)

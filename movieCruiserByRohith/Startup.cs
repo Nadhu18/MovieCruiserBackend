@@ -11,7 +11,7 @@ using System;
 
 namespace movieCruiserByRohith
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -28,8 +28,10 @@ namespace movieCruiserByRohith
             {
                 connectionString = Configuration.GetConnectionString("MovieCruiserByRohithDB");
             }
-            services.AddMvc();
+            
             services.AddDbContext<MoviesDbContext>(options => options.UseSqlServer(connectionString));
+            ConfigureJwtAuthService(Configuration, services);
+            services.AddMvc();
             services.AddScoped<IMoviesDbContext, MoviesDbContext>();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IMovieService, MovieService>();
@@ -69,6 +71,7 @@ namespace movieCruiserByRohith
           .AllowAnyMethod()
           .AllowCredentials());
 
+            app.UseAuthentication();
             app.UseMvc();
 
             app.UseSwagger();

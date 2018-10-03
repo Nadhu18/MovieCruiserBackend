@@ -1,0 +1,11 @@
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthSever.deps.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthSever.runtimeconfig.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthSever.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthSever.dll
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthSever.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthSever.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthSever.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthSever.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\bin\Debug\netcoreapp2.0\AuthSever.pdb
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthSever.dll
+C:\Users\Administrator\source\repos\movieCruiserByRohith\AuthSever\obj\Debug\netcoreapp2.0\AuthSever.pdb

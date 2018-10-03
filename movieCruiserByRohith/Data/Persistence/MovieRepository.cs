@@ -43,8 +43,8 @@ namespace movieCruiserByRohith.Data.Persistence
         }
 
         //Returns true if movie exists in DB, else false
-        public bool MovieExists(int id) {
-            return _context.Movies.Any(e => e.Id == id);
+        public bool MovieExists(int id, string userId) {
+            return _context.Movies.Any(e => e.Id == id && e.UserId==userId);
         }
     }
 }
