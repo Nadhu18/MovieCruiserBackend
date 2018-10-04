@@ -12,6 +12,7 @@ namespace AuthSever.Services
             _repo = repo;
         }
 
+        //returns true if user exists in db
         public bool IsUserExists(string UserId) {
             var user = _repo.FindUserById(UserId);
             if (user != null) {
@@ -20,6 +21,7 @@ namespace AuthSever.Services
             return false;
         }
 
+        //will return the user if the login details are valid
         public User Login(string UserId, string Password) {
             var user = _repo.Login(UserId, Password);
             if (user != null)
@@ -31,6 +33,7 @@ namespace AuthSever.Services
             }
         }
 
+        //to register the user
         public User Register(User UserDetails) {
             var user = _repo.Register(UserDetails);
             return user;
